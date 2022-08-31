@@ -1,23 +1,24 @@
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import  Entertainment from "./Data/Wine.json";
+import ScatterChart from './Components/Scatter';
+import ScatterPlot from './Components/Scatter';
+import BarChart from './Components/BarChart';
 function App() {
+  let [datas,setdata]=useState([]);
+  useEffect(()=>{
+    setdata(Entertainment.Entertainment);
+    console.log(Entertainment)
+  })
+  console.log(datas);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" >
+        <div style={{minWidth:"100px"}}>
+         <BarChart data={datas} />  
+          <ScatterChart data={datas}/>   
+        </div>
+      
     </div>
   );
 }
